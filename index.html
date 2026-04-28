@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A Tal Pizza Brasileira | Pedido na Mesa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="loginScreen" class="login-screen">
+        <div class="brand-panel">
+          <img class="brand-logo" src="./pizza_logo.jpg" alt="A Tal Pizza Brasileira" />
+        </div>
+
+        <div class="auth-card login-card">
+          <div class="auth-tabs">
+            <button id="showLoginBtn" class="auth-tab active" type="button">Entrar</button>
+            <button id="showRegisterBtn" class="auth-tab" type="button">Cadastrar</button>
+          </div>
+
+          <form id="loginForm" class="auth-form">
+            <label>
+              Email ou telefone
+              <input id="loginInput" autocomplete="username" placeholder="email ou telefone" required />
+            </label>
+            <label>
+              Senha
+              <input id="passwordInput" type="password" autocomplete="current-password" placeholder="sua senha" required />
+            </label>
+            <button class="primary-action" type="submit">Entrar</button>
+          </form>
+
+          <form id="registerForm" class="auth-form hidden">
+            <label>
+              Nome
+              <input id="registerNameInput" autocomplete="name" placeholder="Seu nome" required />
+            </label>
+            <label>
+              Email
+              <input id="registerEmailInput" type="email" autocomplete="email" placeholder="seu@email.com" required />
+            </label>
+            <label>
+              Telefone
+              <input id="registerPhoneInput" autocomplete="tel" placeholder="912 345 678" required />
+            </label>
+            <label>
+              Contribuinte
+              <input id="registerTaxInput" inputmode="numeric" placeholder="NIF / contribuinte" required />
+            </label>
+            <label>
+              Senha
+              <input id="registerPasswordInput" type="password" autocomplete="new-password" placeholder="crie uma senha" required />
+            </label>
+            <button class="primary-action" type="submit">Criar cadastro</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="tableScreen" class="login-screen hidden">
+        <div class="brand-panel">
+          <img class="brand-logo" src="./pizza_logo.jpg" alt="A Tal Pizza Brasileira" />
+        </div>
+
+        <form id="tableForm" class="login-card">
+          <div>
+            <p class="eyebrow">Mesa</p>
+            <h2>Onde você está?</h2>
+          </div>
+          <label>
+            Selecione sua mesa
+            <select id="tableInput">
+              <option value="Mesa 01">Mesa 01</option>
+              <option value="Mesa 02">Mesa 02</option>
+              <option value="Mesa 03">Mesa 03</option>
+              <option value="Mesa 04">Mesa 04</option>
+              <option value="Mesa 05">Mesa 05</option>
+              <option value="Mesa 06">Mesa 06</option>
+              <option value="Mesa 07">Mesa 07</option>
+              <option value="Mesa 08">Mesa 08</option>
+              <option value="Mesa 09">Mesa 09</option>
+              <option value="Mesa 10">Mesa 10</option>
+              <option value="Mesa 11">Mesa 11</option>
+              <option value="Mesa 12" selected>Mesa 12</option>
+            </select>
+          </label>
+          <button class="primary-action" type="submit">Continuar pedido</button>
+        </form>
+      </section>
+
+      <section id="orderScreen" class="order-screen hidden">
+        <header class="topbar">
+          <div class="topbar-brand">
+            <img src="./pizza_logo.jpg" alt="A Tal Pizza Brasileira" />
+            <div>
+              <span id="tableBadge">Mesa 12</span>
+              <strong>A Tal Pizza Brasileira</strong>
+            </div>
+          </div>
+          <button id="callWaiterBtn" class="icon-action" type="button" title="Chamar atendente" aria-label="Chamar atendente">
+            <span aria-hidden="true">!</span>
+          </button>
+        </header>
+
+        <nav class="category-tabs" aria-label="Categorias">
+          <button class="tab active" data-category="Tradicionais" type="button">Tradicionais</button>
+          <button class="tab" data-category="Top" type="button">Top</button>
+          <button class="tab" data-category="Doces" type="button">Doces</button>
+          <button class="tab" data-category="Porções" type="button">Porções</button>
+          <button class="tab" data-category="Bebidas" type="button">Bebidas</button>
+          <button class="tab" data-category="Cervejas" type="button">Cervejas</button>
+          <button class="tab" data-category="Extras" type="button">Extras</button>
+          <button class="tab" data-category="Pedidos" type="button">Pedidos</button>
+          <button class="tab" data-category="Conta" type="button">Conta</button>
+        </nav>
+
+        <section class="content-grid">
+          <div class="menu-area">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Cardápio</p>
+                <h2 id="categoryTitle">Tradicionais</h2>
+              </div>
+              <button id="openCartBtn" class="cart-pill" type="button">
+                <span aria-hidden="true">Pedido</span>
+                <span id="cartCount">0</span>
+              </button>
+            </div>
+            <div id="productList" class="product-list"></div>
+          </div>
+
+          <aside class="cart-panel" aria-label="Pedido atual">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Pedido atual</p>
+                <h2>Sua mesa</h2>
+              </div>
+            </div>
+
+            <div id="cartItems" class="cart-items empty-state">Nenhum produto adicionado.</div>
+
+            <label class="notes-field">
+              Observações
+              <textarea id="orderNotes" rows="3" placeholder="Ex.: sem cebola, massa fina, gelo separado"></textarea>
+            </label>
+
+            <div class="totals">
+              <div><span>Subtotal</span><strong id="subtotalText">0,00 &euro;</strong></div>
+              <div><span>Serviço 10%</span><strong id="serviceText">0,00 &euro;</strong></div>
+              <div class="grand-total"><span>Total</span><strong id="totalText">0,00 &euro;</strong></div>
+            </div>
+
+            <button id="sendOrderBtn" class="primary-action" type="button">Enviar para cozinha e bar</button>
+
+            <div class="history">
+              <h3>Comandas enviadas</h3>
+              <div id="orderHistory" class="history-list empty-state">Ainda não há comandas.</div>
+            </div>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <div id="mobileCart" class="mobile-cart hidden">
+      <div class="mobile-cart-header">
+        <div>
+          <strong>Editar pedido</strong>
+          <span>Confira os itens antes de enviar para a cozinha e bar.</span>
+        </div>
+        <button id="closeCartBtn" class="icon-action dark" type="button" aria-label="Fechar pedido">x</button>
+      </div>
+      <div id="mobileCartItems"></div>
+      <label class="notes-field mobile-notes-field">
+        Observações
+        <textarea id="mobileOrderNotes" rows="3" placeholder="Ex.: sem cebola, massa fina, sem gelo"></textarea>
+      </label>
+      <div class="mobile-cart-actions">
+        <button id="mobileSendOrderBtn" class="primary-action" type="button">Enviar para cozinha e bar</button>
+      </div>
+    </div>
+
+    <div id="mobileActionBar" class="mobile-action-bar hidden">
+      <button id="mobileOpenCartBtn" class="secondary-action" type="button">Editar pedido</button>
+      <button id="mobileQuickSendBtn" class="primary-action" type="button">Enviar</button>
+    </div>
+
+    <div id="emailValidationModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="emailValidationTitle">
+      <div class="modal">
+        <p class="eyebrow">Validação de email</p>
+        <h2 id="emailValidationTitle">Olhe o teu email e valide</h2>
+        <p class="modal-copy">
+          Enviamos uma mensagem de validação para <strong id="validationEmailText"></strong>.
+          Depois de validar, volte para entrar com email ou telefone e senha.
+        </p>
+        <button id="simulateEmailValidationBtn" class="primary-action" type="button">Validar email</button>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
