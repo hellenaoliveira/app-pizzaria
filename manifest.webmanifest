@@ -1,0 +1,19 @@
+{
+  "name": "A Tal Pizza Brasileira",
+  "short_name": "A Tal Pizza",
+  "description": "Pedido digital de mesa para a pizzaria A Tal Pizza Brasileira.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#17120f",
+  "theme_color": "#17120f",
+  "icons": [
+    {
+      "src": "./pizza_logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
